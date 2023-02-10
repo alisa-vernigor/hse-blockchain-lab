@@ -14,7 +14,7 @@ contract YetAnotherToken is ERC20, AccessControl {
     }
 
     constructor() ERC20("YetAnotherToken", "YAT") {
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _setupRole(MINTER_ROLE, msg.sender);
         _mint(msg.sender, initialSupply);
     } 
 }
