@@ -7,7 +7,7 @@ contract YetAnotherToken is ERC20, AccessControl {
     uint256 constant initialSupply = 1000000 * (10**18);
 
     struct SomeStruct {
-        string someString;
+        int someInt;
         uint someUint;
         bool someBool;
     }
@@ -19,19 +19,19 @@ contract YetAnotherToken is ERC20, AccessControl {
         SomeStruct userStruct
     );
     function addStruct (
-        string calldata userKey,
-        string calldata someString,
+        string memory userKey,
+        int someInt,
         uint someUint,
         bool someBool
         ) public {
-        someMapping[userKey] = SomeStruct(someString, someUint,someBool);
+        someMapping[userKey] = SomeStruct(someInt, someUint,someBool);
         emit AddStruct(userKey, someMapping[userKey]);
     }
 
     event DeleteStruct(
         string userKey
     );
-    function deleteStruct (string calldata userKey) public {
+    function deleteStruct (string memory userKey) public {
         delete someMapping[userKey];
         emit DeleteStruct(userKey);
     }
